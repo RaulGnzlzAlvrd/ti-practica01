@@ -45,7 +45,12 @@ export class PersonaComponent implements OnInit {
         console.log(this.personas)
       },
       err => console.error(err)
-    )
+    );
+    this.personas = [
+      new Persona(11,"Ivan","Saavedra","1992-01-01T00:00:00.000+00:00","Av. Universidad S/N, Coyoacán","SAIV920101"), 
+      new Persona(12,"María","Salazar","1974-05-12T00:00:00.000+00:00","Insurgentes Sur 1431, Mixcoac","SAMA740512"), 
+      new Persona(13,"Juan","Pérez","1970-08-25T00:00:00.000+00:00","Paseo de la Reforma 4312, Centro", "PEJU501025")
+    ];
   }
 
   // Consultar una persona
@@ -75,7 +80,10 @@ export class PersonaComponent implements OnInit {
     }
 
     this.personaService.createPersona(this.personaForm.value).subscribe(
-      res => this.getPersonas(),
+      res => {
+        this.getPersonas()
+        $("#personaModal").modal("hide");
+      },
       err => console.error(err)
     )
   }
@@ -96,4 +104,9 @@ export class PersonaComponent implements OnInit {
   }
 
   get f() { return this.personaForm.controls;}
+
+  openModalPersona() {
+    this.personaForm.reset();
+    $("#personaModal").modal("show");
+  }
 }
