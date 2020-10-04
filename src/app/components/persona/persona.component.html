@@ -2,9 +2,9 @@
     <div class="card mb-3">
         <!-- Header  -->
         <div class="card-header">
-            <h3><i class="fas fa-user"></i>&nbsp;&nbsp;Personas</h3>
+            <h3><i class="fas fa-address-card"></i>&nbsp;&nbsp;Personas</h3>
             <button style="float: right;" (click)="openModalPersona()" type="button" class="btn btn-info btn-sm">
-                Agregar Persona <i class="fa fa-id-card"></i>
+                Registrar
             </button>
         </div>
 
@@ -14,7 +14,6 @@
                 <thead class="thead-light">
                     <tr>
                         <th class="text-center">Nombre</th>
-                        <th class="text-center">Apellidos</th>
                         <th class="text-center">Fecha de Nacimiento</th>
                         <th class="text-center">Domicilio</th>
                         <th class="text-center">RFC</th>
@@ -23,20 +22,19 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let persona of personas">
-                        <td class="text-center">{{ persona.nombre }}</td>
-                        <td class="text-center">{{ persona.apellidos }}</td>
-                        <td class="text-center">{{ persona.fecha_nacimiento }}</td>
+                        <td class="text-center">{{ persona.getFullName() }}</td>
+                        <td class="text-center">{{ persona.getFormatBirthDate() }}</td>
                         <td class="text-center">{{ persona.domicilio }}</td>
                         <td class="text-center">{{ persona.rfc }}</td>
 
                         <td>
                             <div>
                                 <button (click)="updatePersona(persona)" type="button" class="btn btn-primary">
-                                    Editar <i class="fas fa-edit"></i>
+                                    Modificar
                                 </button>
                                 &nbsp;&nbsp;
                                 <button (click)="deletePersona(persona.id)" type="button" class="btn btn-danger">
-                                    Eliminar <i class="fas fa-trash"></i>
+                                    Eliminar
                                 </button>
                             </div>
                         </td>
