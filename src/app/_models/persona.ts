@@ -28,4 +28,11 @@ export class Persona {
         var year:Number = this.fecha_nacimiento.getFullYear();
         return `${diaNombre} ${dia} de ${mes} de ${year}`;
     }
+
+    getDateForInput() {
+        var d:Date = this.fecha_nacimiento;
+        var month:String = (d.getMonth() <= 8 ? '0' : '') + (d.getMonth() + 1);
+        var day:String = (d.getDate() <= 9 ? '0' : '') + d.getDate();
+        return `${d.getFullYear()}-${month}-${day}`;
+    }
 }

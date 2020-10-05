@@ -98,15 +98,32 @@ export class PersonaComponent implements OnInit {
     }
 
     this.personaService.updatePersona(this.personaForm.value).subscribe(
-      res => this.getPersonas(),
+      res => {
+        this.getPersonas()
+        $("#updatePersonaModal").modal("hide");
+      },
       err => console.error(err)
-    )
+    );
   }
 
-  get f() { return this.personaForm.controls;}
+  get f() { 
+    return this.personaForm.controls;
+  }
 
   openModalPersona() {
     this.personaForm.reset();
     $("#personaModal").modal("show");
+  }
+
+  openModalUpdatePersona(persona:Persona) {
+    this.personaForm.setValue({
+      id: persona.id,
+      nombre: persona.nombre,
+      apellidos: persona.apellidos,
+      fecha_nacimiento: persona.fecha_nacimiento,
+      domicilio: persona.domicilio,
+      rfc: persona.rfc
+    });
+    $("#updatePersonaModal").modal("show");
   }
 }
