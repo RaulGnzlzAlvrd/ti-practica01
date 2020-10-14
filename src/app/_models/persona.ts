@@ -21,9 +21,9 @@ export class Persona {
 
     getFormatBirthDate() {
         var months:String[] = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-        var days:String[] = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+        var days:String[] = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
         var diaNombre:String = days[this.fecha_nacimiento.getDay()];
-        var dia:Number = this.fecha_nacimiento.getDate();
+        var dia:Number = this.fecha_nacimiento.getDate() + 1;
         var mes:String = months[this.fecha_nacimiento.getMonth()];
         var year:Number = this.fecha_nacimiento.getFullYear();
         return `${diaNombre} ${dia} de ${mes} de ${year}`;
@@ -32,7 +32,7 @@ export class Persona {
     getDateForInput() {
         var d:Date = this.fecha_nacimiento;
         var month:String = (d.getMonth() <= 8 ? '0' : '') + (d.getMonth() + 1);
-        var day:String = (d.getDate() <= 9 ? '0' : '') + d.getDate();
+        var day:String = (d.getDate() + 1 <= 9 ? '0' : '') + (d.getDate() + 1);
         return `${d.getFullYear()}-${month}-${day}`;
     }
 }

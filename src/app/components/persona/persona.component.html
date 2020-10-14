@@ -123,7 +123,7 @@
                 <form [formGroup]="personaForm" (ngSubmit)="updatePersona()">
                     <div class="form-group">
                         <label for="nombre">Nombre<span class="text-danger">*</span></label>
-                        <input type="text" formControlName="nombre" value="{{ persona ? persona.nombre : null }}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
+                        <input type="text" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
                         <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
                             <div *ngIf="f.nombre.errors.required">El nombre de la persona es obligatorio</div>
                         </div>
@@ -131,7 +131,7 @@
 
                     <div class="form-group">
                         <label for="apellidos">Apellidos<span class="text-danger">*</span></label>
-                        <input type="text" formControlName="apellidos" value="{{ persona ? persona.apellidos : null }}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
+                        <input type="text" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
                         <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
                             <div *ngIf="f.apellidos.errors.required">Los apellidos de la persona son obligatorios</div>
                         </div>
@@ -139,7 +139,7 @@
             
                     <div class="form-group">
                         <label for="fecha_nacimiento">Fecha de nacimiento<span class="text-danger">*</span></label>
-                        <input type="date" formControlName="fecha_nacimiento" value="{{ persona ? persona.getDateForInput() : null }}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fecha_nacimiento.errors }" />
+                        <input type="date" formControlName="fecha_nacimiento" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fecha_nacimiento.errors }" />
                         <div *ngIf="submitted && f.fecha_nacimiento.errors" class="invalid-feedback">
                             <div *ngIf="f.fecha_nacimiento.errors.required">La fecha de nacimiento de la persona es obligatorio</div>
                         </div>
@@ -147,7 +147,7 @@
             
                     <div class="form-group">
                         <label for="domicilio">Domicilio<span class="text-danger">*</span></label>
-                        <textarea rows="3" formControlName="domicilio" value="{{ persona ? persona.domicilio : null }}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.domicilio.errors }"></textarea>
+                        <textarea rows="3" formControlName="domicilio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.domicilio.errors }"></textarea>
                         <div *ngIf="submitted && f.domicilio.errors" class="invalid-feedback">
                             <div *ngIf="f.domicilio.errors.required">El domicilio de la persona es obligatorio</div>
                         </div>
@@ -155,7 +155,7 @@
             
                     <div class="form-group">
                         <label for="rfc">RFC<span class="text-danger">*</span></label>
-                        <input type="text" formControlName="rfc" value="{{ persona ? persona.rfc : null }}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rfc.errors }" />
+                        <input type="text" formControlName="rfc" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rfc.errors }" />
                         <div *ngIf="submitted && f.rfc.errors" class="invalid-feedback">
                             <div *ngIf="f.rfc.errors.required">El RFC de la persona es obligatorio</div>
                         </div>
